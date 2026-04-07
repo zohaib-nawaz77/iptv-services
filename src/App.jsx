@@ -53,7 +53,7 @@ const Navbar = () => {
             <div className="w-8 h-8 bg-linear-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center">
               <Tv className="w-5 h-5 text-white" />
             </div>
-            <span className="text-white font-bold text-xl tracking-tight">StreamMax</span>
+            <span className="text-white font-bold text-xl tracking-tight">AllStreamPlus</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -567,7 +567,7 @@ const Footer = () => {
               <div className="w-8 h-8 bg-linear-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center">
                 <Tv className="w-5 h-5 text-white" />
               </div>
-              <span className="text-white font-bold text-xl">StreamMax</span>
+              <span className="text-white font-bold text-xl">AllStreamPlus</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Premium IPTV service providing access to thousands of channels and on-demand content worldwide.
@@ -595,7 +595,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm">
-            © 2024 StreamMax IPTV. All rights reserved.
+            © 2024 AllStreamPlus IPTV. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -620,29 +620,29 @@ const Footer = () => {
 // Main App Component
 const App = () => {
   return (
-      <div className="min-h-screen bg-black text-white overflow-x-hidden">
-        <Navbar />
-        <main>
-          <Hero />
-          <Features />
-          <CurrentShows />
-          <Pricing />
-          <Partners />
-        </main>
-        <Footer />
-        <ToastContainer
-          position="bottom-right"
-          theme="dark"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </div>
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      <Navbar />
+      <main>
+        <Hero />
+        <Features />
+        <CurrentShows />
+        <Pricing />
+        <Partners />
+      </main>
+      <Footer />
+      <ToastContainer
+        position="bottom-right"
+        theme="dark"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </div>
   );
 };
 
