@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+
+
+.pricing-swiper,
+.pricing-swiper .swiper-wrapper,
+.pricing-swiper .swiper-slide {
+  overflow: visible !important;
+}
+
+
+.pricing-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: white;
+  opacity: 0.4;
+}
+
+.pricing-swiper .swiper-pagination-bullet-active {
+  background: #22c55e; /* green */
+  opacity: 1;
+  transform: scale(1.2);
+}
