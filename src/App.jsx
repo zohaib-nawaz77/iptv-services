@@ -23,6 +23,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'react-toastify/dist/ReactToastify.css';
+import Faqs from './components/Faqs';
 
 // Navigation Component
 const Navbar = () => {
@@ -181,7 +182,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Experience seamless access to 10,000+ channels, movies, and sports in stunning 4K quality. Works on all devices, anywhere, anytime.Join today for seamless experience!
+            Experience seamless access to 14,000+ channels, movies, and sports in stunning 4K quality. Works on all devices, anywhere, anytime.Join today for seamless experience!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -628,6 +629,7 @@ const App = () => {
         <CurrentShows />
         <Pricing />
         <Partners />
+        <Faqs />
       </main>
       <Footer />
       <ToastContainer
