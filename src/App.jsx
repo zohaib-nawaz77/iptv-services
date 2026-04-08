@@ -24,6 +24,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'react-toastify/dist/ReactToastify.css';
 import Faqs from './components/Faqs';
+import Price from './components/Price';
 
 // Navigation Component
 const Navbar = () => {
@@ -359,11 +360,16 @@ const CurrentShows = () => {
 };
 
 // Pricing Section
+// Pricing Section
 const Pricing = () => {
+  const [isAnnual, setIsAnnual] = useState(false);
+
+  // Define plans with both monthly and annual pricing
   const plans = [
     {
       name: 'Basic',
-      price: 9.99,
+      monthlyPrice: 9.99,
+      annualPrice: 99.99, // ~17% savings
       period: 'month',
       features: [
         '1,000+ Channels',
@@ -376,7 +382,8 @@ const Pricing = () => {
     },
     {
       name: 'Premium',
-      price: 500,
+      monthlyPrice: 14.99,
+      annualPrice: 149.99, // ~17% savings
       period: 'month',
       features: [
         '5,000+ Channels',
@@ -391,7 +398,8 @@ const Pricing = () => {
     },
     {
       name: 'Ultimate',
-      price: 24.99,
+      monthlyPrice: 24.99,
+      annualPrice: 249.99, // ~17% savings
       period: 'month',
       features: [
         '10,000+ Channels',
@@ -407,13 +415,14 @@ const Pricing = () => {
       popular: false
     },
     {
-      name: 'Annual',
-      price: 149.99,
+      name: 'Annual Pass',
+      monthlyPrice: 12.49,
+      annualPrice: 149.99,
       period: 'year',
       features: [
-        '10,000+ Channels',
+        '14,000+ Channels',
         '4K Ultra HD',
-        '5 Device Connections',
+        'Unlimited Devices',
         '24/7 VIP Support',
         'EPG Guide',
         'VOD Library',
@@ -433,6 +442,34 @@ const Pricing = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Choose Your Plan</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">Flexible pricing options to suit your entertainment needs</p>
+
+          <div className="flex items-center justify-center gap-4 my-12">
+            <span className={`text-sm font-medium transition-colors ${!isAnnual ? 'text-white' : 'text-gray-500'}`}>
+              Monthly
+            </span>
+            <button
+              onClick={() => setIsAnnual(!isAnnual)}
+              className="relative w-16 h-8 rounded-full bg-white/10 border border-white/20 p-1 transition-colors hover:border-green-500/50"
+            >
+              <motion.div
+                animate={{ x: isAnnual ? 32 : 0 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                className="w-6 h-6 rounded-full bg-linear-to-r from-green-500 to-emerald-600 shadow-lg"
+              />
+            </button>
+            <span className={`text-sm font-medium transition-colors ${isAnnual ? 'text-white' : 'text-gray-500'}`}>
+              Annual
+            </span>
+            {isAnnual && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold"
+              >
+                Save up to 20%
+              </motion.span>
+            )}
+          </div>
         </div>
 
         <Swiper
@@ -466,9 +503,27 @@ const Pricing = () => {
                 )}
 
                 <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-bold text-white">${plan.price}</span>
-                  <span className="text-gray-400">/{plan.period}</span>
+                
+                {/* Dynamic Price Display */}
+                <div className="flex flex-col mb-6">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-4xl font-bold text-white">
+                      ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                    </span>
+                    <span className="text-gray-400">/{isAnnual ? 'year' : plan.period}</span>
+                  </div>
+                  
+                  {/* Show savings or monthly equivalent when annual is selected */}
+                  {isAnnual && plan.monthlyPrice && (
+                    <span className="text-green-400 text-sm mt-1">
+                      ${(plan.annualPrice / 12).toFixed(2)}/mo equivalent
+                    </span>
+                  )}
+                  {!isAnnual && plan.annualPrice && (
+                    <span className="text-gray-500 text-sm mt-1">
+                      or ${plan.annualPrice}/year
+                    </span>
+                  )}
                 </div>
 
                 <ul className="space-y-4 mb-8">
@@ -481,13 +536,13 @@ const Pricing = () => {
                 </ul>
 
                 <button
-                  onClick={() => toast.success(`Selected ${plan.name} plan! Redirecting to checkout...`)}
+                  onClick={() => toast.success(`Selected ${plan.name} plan!`)}
                   className={`w-full py-4 rounded-xl font-bold transition-all ${plan.popular
                     ? 'bg-green-500 hover:bg-green-600 text-black'
                     : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
                     }`}
                 >
-                  Get Started
+                  {isAnnual ? 'Get Annual Plan' : 'Get Started'}
                 </button>
               </motion.div>
             </SwiperSlide>

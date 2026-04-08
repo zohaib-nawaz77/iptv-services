@@ -125,7 +125,7 @@ const Faqs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-16 text-center p-8 rounded-3xl bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/20"
+          className="mt-16 text-center p-8 rounded-3xl bg-linear-to-br from-green-500/10 to-emerald-600/10 border border-green-500/20"
         >
           <h3 className="text-2xl font-bold text-white mb-3">Still have questions?</h3>
           <p className="text-gray-400 mb-6">Our support team is available 24/7 to help you with any inquiries</p>
